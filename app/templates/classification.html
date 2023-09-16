@@ -11,7 +11,7 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.html">Fingerprint Recognition</a>
+        <a class="navbar-brand ps-3" href="{{url_for('index')}}">Fingerprint Recognition</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0 ms-3" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     </nav>
@@ -23,7 +23,7 @@
                         <div class="sb-sidenav-menu-heading">Core</div>
                         <a class="nav-link" href="{{url_for('index')}}">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
+                            Research
                         </a>
                         <div class="sb-sidenav-menu-heading">System</div>
                         <a class="nav-link" href="{{url_for('classification')}}">
@@ -31,11 +31,11 @@
                             Classification DEMO
                         </a>
                         <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="charts.html">
+                        <a class="nav-link" href="#">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Charts
                         </a>
-                        <a class="nav-link" href="tables.html">
+                        <a class="nav-link" href="#">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Tables
                         </a>
@@ -45,14 +45,29 @@
         </div>
         <div id="layoutSidenav_content">
             <main>
-                <div class="container-fluid px-4">
+                <div class="container px-4">
                     <h1 class="mt-4">Fingerprint Recognition</h1>
                     <form action="{{url_for('/classification/results')}}", method="post", enctype="multipart/form-data">
-                        <input type="file" name="file" placeholder="Choose fingerprint image" required>
-                
-                        <button type="submit">Predict</button>
+                        <div class="btn-group my-4" role="group" aria-label="Basic radio toggle button group">
+                            <input name="models" type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" value="supervised" checked>
+                            <label class="btn btn-outline-primary" for="btnradio1">Supervised(ResNet50)</label>
+                                  
+                            <input name="models" type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" value="classical">
+                            <label class="btn btn-outline-primary" for="btnradio4">Classical</label>
+
+                            <input name="models" type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" value="simulator">
+                            <label class="btn btn-outline-primary" for="btnradio2">Classical+Quantum(Simulator)</label>
+                                  
+                            <input name="models" type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" value="statevector">
+                            <label class="btn btn-outline-primary" for="btnradio3">Classical+Quantum(Statevector)</label>                
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="file" name="file" class="form-control" id="inputGroupFile02" required>
+                            <button type="submit" class="btn btn-primary">預測</button>
+                        </div>
                     </form>
-                    <h4>Fingerprint ID: {{prediction_id}}</h4>
+                    <h3>Groundtruth ID: {{groundtruth}}</h3>
+                    <h3>Predicted ID: {{prediction_id}}</h3>
                     <img src="{{img}}">
                 </div>
             </main>

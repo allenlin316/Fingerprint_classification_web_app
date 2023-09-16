@@ -16,6 +16,8 @@ def classification():
 
 def results():
     fingerprint_img = request.files['file'].filename
+    fingerprint_id = fingerprint_img.split('__')[0]
+    print(fingerprint_id)
     img = os.path.join(" ", "static", "Image", fingerprint_img)
     pred = predict(fingerprint_img)
-    return render_template('classification.html', img=img, prediction_id=pred)    
+    return render_template('classification.html', groundtruth=fingerprint_id, img=img, prediction_id=pred)    
