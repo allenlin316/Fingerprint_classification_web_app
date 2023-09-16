@@ -1,16 +1,14 @@
-from flask import Flask, request, render_template
-import pickle, os, cv2, torch
+import os, cv2, torch
 from PIL import Image
 from torchvision import models, transforms
 import torch.nn as nn
 import numpy as np
 
-app = Flask(__name__)
 device = "cuda" if torch.cuda.is_available() else "cpu"
 print(f"Using {device} device")
 model = None
 data_transforms = None
-img_dir = os.path.join("static", "Image")
+img_dir = os.path.join("app", 'static', 'Image')
 
 # using ResNet50 pre-trained model
 class ResNet50(nn.Module):
@@ -51,25 +49,12 @@ def load_transform():
         transforms.Normalize(mean=[0.5071, 0.5071, 0.5071], std=[0.4107, 0.4107, 0.4107]), # image = (image-mean) / std
 ])
 
-@app.route("/")
-def home():
-    return render_template('index.html')
-
-@app.route('/predict', methods=['POST'])
-def predict():
-    fingerprint = request.files['file'].filename
-    image = load_data(fingerprint)
-    print(image.shape)
-    image_tensor = data_transforms(image).unsqueeze(0).to(device)
-    print(image_tensor)
-    outputs = model(image_tensor)
-    preds = outputs.argmax(1).item()
-    print(preds)
-    return render_template('index.html', img=os.path.join(img_dir, fingerprint), prediction_id=preds)
-
-
-if __name__ == "__main__":
-    model_path = os.path.join("models", "supervised_fingerprint_model.pt")
+def predict(fingerprint_img):
+    model_path = os.path.join("app", "models", "supervised_fingerprint_model.pt")
     load_model(model_path)
     load_transform()
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    image = load_data(fingerprint_img)
+    image_tensor = data_transforms(image).unsqueeze(0).to(device)
+    outputs = model(image_tensor)
+    preds = outputs.argmax(1).item()
+    return preds
