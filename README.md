@@ -10,6 +10,6 @@ welcome to jump into [QSSL](https://github.com/allenlin316/QSSL) for more detail
 
 ![](https://hackmd.io/_uploads/SkPtinmf6.png)
 
-
 ## Fingerprint Classification Page
-![](https://hackmd.io/_uploads/By47inmzp.png)
+![image](https://github.com/allenlin316/Fingerprint_classification_web_app/assets/79969875/b1828e3e-68bf-43e7-8963-eafd60326d54)
+
