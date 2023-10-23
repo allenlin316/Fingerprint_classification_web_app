@@ -8,7 +8,7 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 print(f"Using {device} device")
 model = None
 data_transforms = None
-img_dir = os.path.join("app", 'static', 'Image')
+img_dir = os.path.join("app", 'static', 'Image', 'fingerprints')
 
 # using ResNet50 pre-trained model
 class ResNet50(nn.Module):
@@ -16,7 +16,10 @@ class ResNet50(nn.Module):
         super(ResNet50, self).__init__()
 
         self.model = models.resnet50()
-
+        
+        # Modify the first layer to accept a single channel
+        self.model.conv1 = nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3, bias=False)
+        
         # 鎖定 ResNet18 預訓練模型參數
         # for param in self.model.parameters():
         #   param.requires_grad = False
@@ -37,16 +40,16 @@ def load_model(model_path): # set pre-trained model
 
 def load_data(filename):
     img_path = os.path.join(img_dir, filename)
-    image = cv2.imread(img_path)
+    image = cv2.imread(img_path, 0) # load image with grayscale
     return image
     
 def load_transform():
     global data_transforms
     data_transforms = transforms.Compose([
         transforms.ToPILImage(), # to PIL format
-        transforms.Resize((80, 80)),
+        transforms.Resize((200, 200)),
         transforms.ToTensor(),
-        transforms.Normalize(mean=[0.5071, 0.5071, 0.5071], std=[0.4107, 0.4107, 0.4107]), # image = (image-mean) / std
+        #transforms.Normalize(mean=[0.5071, 0.5071, 0.5071], std=[0.4107, 0.4107, 0.4107]), # image = (image-mean) / std
 ])
 
 def predict(fingerprint_img):
@@ -56,5 +59,6 @@ def predict(fingerprint_img):
     image = load_data(fingerprint_img)
     image_tensor = data_transforms(image).unsqueeze(0).to(device)
     outputs = model(image_tensor)
-    preds = outputs.argmax(1).item()
-    return preds
+    pred = outputs.argmax(1).item()
+    
+    return pred

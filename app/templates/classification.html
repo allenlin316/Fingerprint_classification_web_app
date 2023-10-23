@@ -26,7 +26,7 @@
                             Research
                         </a>
                         <div class="sb-sidenav-menu-heading">System</div>
-                        <a class="nav-link" href="{{url_for('classification')}}">
+                        <a class="nav-link active" href="{{url_for('classification')}}">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Classification DEMO
                         </a>
@@ -49,26 +49,49 @@
                     <h1 class="mt-4">Fingerprint Recognition</h1>
                     <form action="{{url_for('/classification/results')}}", method="post", enctype="multipart/form-data">
                         <div class="btn-group my-4" role="group" aria-label="Basic radio toggle button group">
-                            <input name="models" type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" value="supervised" checked>
+                            <input name="methods" type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" value="supervised" checked>
                             <label class="btn btn-outline-primary" for="btnradio1">Supervised(ResNet50)</label>
                                   
-                            <input name="models" type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" value="classical">
+                            <input name="methods" type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" value="classical">
                             <label class="btn btn-outline-primary" for="btnradio4">Classical</label>
 
-                            <input name="models" type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" value="simulator">
+                            <input name="methods" type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" value="simulator">
                             <label class="btn btn-outline-primary" for="btnradio2">Classical+Quantum(Simulator)</label>
                                   
-                            <input name="models" type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" value="statevector">
+                            <input name="methods" type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" value="statevector">
                             <label class="btn btn-outline-primary" for="btnradio3">Classical+Quantum(Statevector)</label>                
                         </div>
                         <div class="input-group mb-3">
                             <input type="file" name="file" class="form-control" id="inputGroupFile02" required>
                             <button type="submit" class="btn btn-primary">預測</button>
                         </div>
-                    </form>
-                    <h3>Groundtruth ID: {{groundtruth}}</h3>
-                    <h3>Predicted ID: {{prediction_id}}</h3>
-                    <img src="{{img}}">
+                    </form>                                        
+                    <h2>{{pre_trained}} Method</h2>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Groundtruth</th>
+                            <th scope="col">Predicted</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>                         
+                            <th scope="row">ID</th>
+                            <td>{{groundtruth_id}}</td>
+                            <td>{{prediction_id}}</td>
+                          </tr>
+                          <tr>                 
+                            <th scope="row">Image</th>    
+                            <td><img src="{{groundtruth_img}}" width="20%"></td>
+                            <td><img alt="照片不存在" src="{{pred_img}}" width="20%"></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Correct</th>
+                            <td colspan="2"><b>{{correct}}</b></td>
+                          </tr>                        
+                        </tbody>
+                      </table>
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
