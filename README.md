@@ -2,7 +2,14 @@
 # Fingerprint Classification Web App
 
 ## Models
-welcome to jump into QSSL for more details
+welcome to jump into [QSSL](https://github.com/allenlin316/QSSL) for more details
+
+## Home Page
+* images preprocessing flow chart
+* training architecture fig.
+
+![](https://hackmd.io/_uploads/SkPtinmf6.png)
+
 
 ## Fingerprint Classification Page
-![fingerprint recognition page](https://i.imgur.com/ToOiBfp.jpg)
+![](https://hackmd.io/_uploads/By47inmzp.png)
