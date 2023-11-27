@@ -49,17 +49,14 @@
                     <h1 class="mt-4">Fingerprint Recognition</h1>
                     <form action="{{url_for('/classification/results')}}", method="post", enctype="multipart/form-data">
                         <div class="btn-group my-4" role="group" aria-label="Basic radio toggle button group">
-                            <input name="methods" type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" value="supervised" checked>
+                            <input name="methods" type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" value="Supervised">
                             <label class="btn btn-outline-primary" for="btnradio1">Supervised(ResNet50)</label>
                                   
-                            <input name="methods" type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" value="classical">
-                            <label class="btn btn-outline-primary" for="btnradio4">Classical</label>
+                            <input name="methods" type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" value="Classical SimCLR">
+                            <label class="btn btn-outline-primary" for="btnradio4">Classical SimCLR</label>
 
-                            <input name="methods" type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" value="simulator">
-                            <label class="btn btn-outline-primary" for="btnradio2">Classical+Quantum(Simulator)</label>
-                                  
-                            <input name="methods" type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" value="statevector">
-                            <label class="btn btn-outline-primary" for="btnradio3">Classical+Quantum(Statevector)</label>                
+                            <input name="methods" type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" value="Hybrid(Simulator)">
+                            <label class="btn btn-outline-primary" for="btnradio2">Classical+Quantum(Simulator)</label>               
                         </div>
                         <div class="input-group mb-3">
                             <input type="file" name="file" class="form-control" id="inputGroupFile02" required>
@@ -84,7 +81,7 @@
                           <tr>                 
                             <th scope="row">Image</th>    
                             <td><img src="{{groundtruth_img}}" width="20%"></td>
-                            <td><img alt="照片不存在" src="{{pred_img}}" width="20%"></td>
+                            <td><img src="{{pred_img}}" width="20%"></td>
                           </tr>
                           <tr>
                             <th scope="row">Correct</th>

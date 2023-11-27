@@ -52,26 +52,25 @@
                         <h1 class="mt-4">透過量子自我監督學習之指紋辨識應用</h1> 
                         <p class="text-muted lead">Fingerprint Recognition Application by Quantum Self-Supervised Learning</p>
                         <div class="row">
-                            <div class="col-md-3">
-                                <div class="card mt-3" style="width: 18rem;">                                    
-                                <div class="card-body">
-                                    <h5 class="card-title">大專生研究計畫</h5>
-                                    <p class="card-text">
-                                    <ul>
-                                        <li>指導教授：方文杰</li>
-                                        <li>專題生：林品安、徐文献</li>
-                                    </ul>                                        
-                                </p>                                    
-                                </div>
-                                </div>
+                            <div class="col-lg-6 text-center">                                
+                                <img src="{{url_for('static', filename='Image/self-supervised.gif')}}" alt="self-supervised learning gif" width="90%">
+                                <p class="lead">Self-Supervised Learning Architecture</p>
                             </div>
-                            <div class="col-md-9 text-center">
-                                <img src="{{url_for('static', filename='Image/preprocessing.jpg')}}" alt="image preprocessing" width="80%">
-                                <p class="lead">指紋照片前處理流程圖</p>
-                                <img src="{{url_for('static', filename='Image/training_architecture.jpg')}}" alt="training architecture" width="80%">
+                            <div class="col-lg-6 text-center">
+                                <img src="{{url_for('static', filename='Image/training_architecture_motion.gif')}}" alt="training architecture in motion" width="90%">
+                                <p class="lead">量子訓練架構動畫</p>                                
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="col-lg-6 text-center">
+                                <img src="{{url_for('static', filename='Image/training_architecture.jpg')}}" alt="training architecture" width="90%">
                                 <p class="lead">訓練架構圖</p>
                             </div>
-                        </div>                
+                            <div class="col-lg-6 text-center">
+                                <img src="{{url_for('static', filename='Image/HQC_architecture.jpg')}}" alt="HQC architecture" width="90%">
+                            <p class="lead">HQC 架構圖</p>
+                            </div>                            
+                        </div>           
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
