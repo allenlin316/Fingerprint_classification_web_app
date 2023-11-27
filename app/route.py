@@ -33,7 +33,7 @@ def results():
     fingerprint_id = fingerprint_img.split('__')[0]
     print(f'fingerprint_id: {fingerprint_id}')
     groundtruth_img = os.path.join("/static", "Image", "fingerprints", fingerprint_img)
-    print(f'groundtruth_img: {groundtruth_img}')    
+    print(f'groundtruth_img: {groundtruth_img}')
     try:
         pre_trained = request.form["methods"]
     except:
