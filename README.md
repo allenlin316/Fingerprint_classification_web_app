@@ -8,9 +8,9 @@ welcome to jump into [QSSL](https://github.com/allenlin316/QSSL) for more detail
 * images preprocessing flow chart
 * training architecture fig.
 
-![image](https://github.com/allenlin316/Fingerprint_classification_web_app/assets/79969875/b1828e3e-68bf-43e7-8963-eafd60326d54)
+![image](https://github.com/allenlin316/Fingerprint_classification_web_app/assets/79969875/37f58649-959d-4275-9f27-875183b4b928)
 
 ## Fingerprint Classification Page
 
-![image](https://github.com/allenlin316/Fingerprint_classification_web_app/assets/79969875/bcdc7a43-09b3-4567-8c53-a40abb69a5b1)
+![image](https://github.com/allenlin316/Fingerprint_classification_web_app/assets/79969875/f2de55ac-24f2-49c6-a0b8-847ac6be8711)
 
